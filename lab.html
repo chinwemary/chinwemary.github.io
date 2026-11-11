@@ -3,30 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DVWA Lab Writeup | Chinwe</title>
-<link rel="stylesheet" href="style.css">
+<title>DVWA Lab Writeup | chinwemary</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif; }
+body { background:#0b1220; color:#e6edf7; line-height:1.6; }
+a { text-decoration:none; color:inherit; }
+header { padding:18px 5%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:rgba(11,18,32,.92); border-bottom:1px solid #1e293b; z-index:10; }
+.logo { font-weight:800; font-size:20px; }
+.logo span { color:#22d3ee; }
+nav a { margin-left:18px; font-size:14px; color:#cbd5e1; }
+.hero { padding:60px 5% 40px; background: radial-gradient(circle at 20% 20%, #155e75 0%, transparent 45%), radial-gradient(circle at 85% 10%, #6d28d9 0%, transparent 40%), #0b1220; }
+.badge { display:inline-block; background:#164e63; color:#67e8f9; padding:6px 14px; border-radius:30px; font-size:13px; font-weight:700; }
+.hero h1 { font-size:40px; line-height:1.1; margin:18px 0 12px; max-width:750px; }
+.hero h1 span { color:#22d3ee; }
+.hero p { color:#cbd5e1; max-width:650px; font-size:17px; }
+.tag { margin-top:16px; color:#94a3b8; font-size:14px; letter-spacing:1px; }
+.section { padding:45px 5%; }
+.section h2 { font-size:27px; margin-bottom:8px; }
+.section > p { color:#94a3b8; margin-bottom:22px; }
+.box { background:#111c33; border:1px solid #1e293b; border-radius:16px; padding:24px; }
+.box p { color:#cbd5e1; margin-bottom:10px; }
+.box b { color:#22d3ee; }
+table { width:100%; border-collapse:collapse; background:#111c33; border-radius:14px; overflow:hidden; font-size:14px; }
+th, td { padding:13px 12px; text-align:left; border-bottom:1px solid #1e293b; }
+th { background:#1e293b; color:white; }
+td { color:#cbd5e1; }
+.pass { color:#4ade80; font-weight:700; }
+.fail { color:#f87171; font-weight:700; }
+.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:18px; }
+.card { background:#111c33; border:1px solid #1e293b; border-radius:16px; padding:24px; }
+.card h3 { font-size:20px; margin-bottom:6px; }
+.level { display:inline-block; background:#7c2d12; color:#fdba74; padding:4px 10px; border-radius:20px; font-size:12px; font-weight:700; margin-bottom:14px; }
+.level2 { background:#164e63; color:#67e8f9; }
+.card h4 { color:#22d3ee; font-size:14px; margin:16px 0 6px; letter-spacing:.5px; }
+.card p, .card li { color:#cbd5e1; font-size:15px; }
+.card ul { padding-left:18px; }
+code { background:#0b1220; border:1px solid #334155; padding:3px 7px; border-radius:6px; font-size:13px; color:#fde68a; word-break:break-all; }
+pre { background:#0b1220; border:1px solid #334155; padding:14px; border-radius:10px; overflow-x:auto; margin-top:8px; font-size:13px; color:#e6edf7; }
+.btn { display:inline-block; padding:13px 22px; border-radius:10px; font-weight:700; background:#22d3ee; color:#082f3a; margin-top:10px; }
+.btn2 { background:transparent; border:1px solid #334155; color:white; margin-left:10px; }
+footer { padding:30px 5%; text-align:center; color:#94a3b8; border-top:1px solid #1e293b; font-size:14px; }
+@media(max-width:650px){ .hero h1{font-size:32px;} nav{display:none;} table{font-size:12px;} }
+</style>
 </head>
 <body>
+
 <header>
-<a href="index.html" class="logo">Chinwe</a>
-<nav><a href="index.html">Home</a><a href="article.html">Writing</a></nav>
+  <div class="logo">Chinwe<span>.</span></div>
+  <nav><a href="index.html">Home</a><a href="article.html">Phishing Article</a><a href="lab.html">DVWA Lab</a></nav>
 </header>
-<main>
-<h1>DVWA lab: Reflected XSS, low security level</h1>
-<p><strong>Lab:</strong> DVWA, intentionally vulnerable, local install only. <strong>Tool:</strong> Firefox and Caido proxy.</p>
-<h2>What I tested</h2>
-<p>I entered a name in the reflected XSS form and checked if my input was shown back in the page without safe encoding.</p>
-<h2>What happened</h2>
-<p>At low level, the input was reflected in the response. That means attacker controlled text could change how the page behaves for a victim who clicks a crafted link.</p>
-<h2>Why it matters</h2>
-<p>Reflected XSS can be used for session theft, fake login pages, and redirects. It needs a victim to click, so it is often paired with phishing, like the email in my other article.</p>
-<h2>The fix</h2>
-<p>Encode user input on output with a function like htmlspecialchars in PHP, validate input on the server, and set a strong Content Security Policy. Never trust browser JavaScript checks alone, because a proxy like Caido can bypass them.</p>
-<h2>What I learned</h2>
-<p>Client side checks are for user experience, not security. The real check must happen on the server.</p>
-<p><a href="index.html">Back home</a></p>
-</main>
-<footer><p>Lab done in a local DVWA install for learning only.</p></footer>
-<script src="script.js"></script>
+
+<section class="hero">
+  <span class="badge">🧪 DVWA LAB WRITEUP</span>
+  <h1>I tested DVWA like a real attacker. <span>Then I fixed it like a defender.</span></h1>
+  <p>I practiced common web attacks in a safe, legal lab on my own computer. No real website was attacked. For each test, I show what I tried, what happened, and how to fix it.</p>
+  <p class="tag">SAFE LAB ONLY &nbsp;•&nbsp; LOW / MEDIUM / HIGH &nbsp;•&nbsp; NO REAL TARGETS</p>
+</section>
+
+<section class="section">
+  <h2>Lab Setup</h2>
+  <div class="box">
+    <p><b>Lab:</b> DVWA - Damn Vulnerable Web Application, run locally</p>
+    <p><b>Goal:</b> Find the weakness, prove it works, then explain the fix in simple English</p>
+    <p><b>Rules:</b> Only my own lab. No real websites, no real passwords, no real data.</p>
+    <p><b>Levels tested:</b> Low, Medium, and High, where the fix changes the result</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Results At A Glance</h2>
+  <p>7 tests. All of them worked at Low level. Most were blocked or made harder at High level.</p>
+  <div style="overflow-x:auto;">
+  <table>
+    <tr><th>Test</th><th>Low</th><th>Medium</th><th>High</th></tr>
+    <tr><td>1. SQL Injection</td><td class="fail">Vulnerable</td><td class="fail">Vulnerable</td><td class="pass">Blocked / Harder</td></tr>
+    <tr><td>2. Reflected XSS</td><td class="fail">Vulnerable</td><td class="fail">Vulnerable</td><td class="pass">Blocked</td></tr>
+    <tr><td>3. Stored XSS</td><td class="fail">Vulnerable</td><td class="fail">Vulnerable</td><td class="pass">Blocked</td></tr>
+    <tr><td>4. Command Injection</td><td class="fail">Vulnerable</td><td class="fail">Vulnerable</td><td class="pass">Blocked</td></tr>
+    <tr><td>5. Brute Force</td><td class="fail">Vulnerable</td><td class="fail">Slower</td><td class="pass">Locked / Delayed</td></tr>
+    <tr><td>6. CSRF - Change Password</td><td class="fail">Vulnerable</td><td class="fail">Vulnerable</td><td class="pass">Blocked</td></tr>
+    <tr><td>7. File Upload</td><td class="fail">Vulnerable</td><td class="fail">Vulnerable</td><td class="pass">Blocked</td></tr>
+  </table>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Full Test Reports</h2>
+  <p>Read 1 test at a time. Each one follows the same pattern: Goal, What I Did, What Happened, How To Fix It.</p>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>1. SQL Injection</h3><span class="level">LOW • MEDIUM • HIGH</span>
+      <h4>GOAL</h4><p>Can I trick the database into showing data I should not see?</p>
+      <h4>WHAT I DID</h4><ul><li>Opened SQL Injection page, entered a normal User ID: <code>1</code></li><li>Then tried: <code>1' OR '1'='1</code></li><li>Then tried: <code>1' UNION SELECT user, password FROM users #</code></li></ul>
+      <h4>WHAT HAPPENED</h4><p>At Low, it showed all users. At High, the same input was blocked. This proves the code was not checking user input safely at Low level.</p>
+      <h4>HOW TO FIX IT</h4><p>Use prepared statements, never build a database query with raw user input, and give the database user only the permission it needs.</p>
+    </div>
+
+    <div class="card">
+      <h3>2. Reflected XSS</h3><span class="level">LOW • MEDIUM • HIGH</span>
+      <h4>GOAL</h4><p>Can I make the page run my own script from a link?</p>
+      <h4>WHAT I DID</h4><ul><li>Entered my name normally, it showed: Hello, John</li><li>Then tried: <code>&lt;script&gt;alert(1)&lt;/script&gt;</code></li></ul>
+      <h4>WHAT HAPPENED</h4><p>At Low, a popup appeared, the script ran. At High, the script was cleaned and shown as plain text, no popup.</p>
+      <h4>HOW TO FIX IT</h4><p>Escape all user input before showing it on the page, and use a strict allow-list for what is allowed.</p>
+    </div>
+
+    <div class="card">
+      <h3>3. Stored XSS</h3><span class="level">LOW • MEDIUM • HIGH</span>
+      <h4>GOAL</h4><p>Can I save a bad script so it runs for every visitor later?</p>
+      <h4>WHAT I DID</h4><ul><li>Left a guestbook message with a script tag inside it</li><li>Refreshed the page, and visited it again later</li></ul>
+      <h4>WHAT HAPPENED</h4><p>At Low, the script ran every time the page loaded, for anyone who opened it. This is more dangerous than Reflected XSS because it stays saved.</p>
+      <h4>HOW TO FIX IT</h4><p>Escape and clean all saved messages before storing and before showing them, and limit the length and characters allowed.</p>
+    </div>
+
+    <div class="card">
+      <h3>4. Command Injection</h3><span class="level">LOW • MEDIUM • HIGH</span>
+      <h4>GOAL</h4><p>Can I run a system command through the ping box?</p>
+      <h4>WHAT I DID</h4><ul><li>Entered a normal IP: <code>127.0.0.1</code>, it pinged fine</li><li>Then tried: <code>127.0.0.1; whoami</code></li><li>Then tried: <code>127.0.0.1 && dir</code></li></ul>
+      <h4>WHAT HAPPENED</h4><p>At Low, it ran my extra command and showed the result. At High, only a valid IP was allowed, my extra command was ignored.</p>
+      <h4>HOW TO FIX IT</h4><p>Never pass user input straight to the system. Check it is a real IP address first, and use safe code that does not use a shell.</p>
+    </div>
+
+    <div class="card">
+      <h3>5. Brute Force</h3><span class="level">LOW • MEDIUM • HIGH</span>
+      <h4>GOAL</h4><p>Can I guess a weak password by trying many times?</p>
+      <h4>WHAT I DID</h4><ul><li>Tried the login page with a small wordlist of common passwords in my own lab</li><li>Counted how many tries were allowed, and if there was a delay or lock</li></ul>
+      <h4>WHAT HAPPENED</h4><p>At Low, I could try again and again with no delay. At High, tries were slower and the account was protected better.</p>
+      <h4>HOW TO FIX IT</h4><p>Lock the account after a few wrong tries, add a delay, add CAPTCHA, and force strong passwords plus 2FA.</p>
+    </div>
+
+    <div class="card">
+      <h3>6. CSRF - Change Password</h3><span class="level">LOW • MEDIUM • HIGH</span>
+      <h4>GOAL</h4><p>Can a bad link change a logged-in user's password without them knowing?</p>
+      <h4>WHAT I DID</h4><ul><li>Opened the Change Password page while logged in</li><li>Built a link with the new password inside it, and opened it in a new tab</li></ul>
+      <h4>WHAT HAPPENED</h4><p>At Low, the password changed just by opening the link, no extra check. At High, it asked for the current password and a secret token, so the link alone failed.</p>
+      <h4>HOW TO FIX IT</h4><p>Use a secret CSRF token on every form, ask for the current password before changing it, and check the token on the server.</p>
+    </div>
+
+    <div class="card">
+      <h3>7. File Upload</h3><span class="level">LOW • MEDIUM • HIGH</span>
+      <h4>GOAL</h4><p>Can I upload a dangerous file instead of a normal image?</p>
+      <h4>WHAT I DID</h4><ul><li>Uploaded a normal .jpg first, it worked</li><li>Then tried to upload a test script file with a .php ending</li></ul>
+      <h4>WHAT HAPPENED</h4><p>At Low, the file was accepted with no real check. At High, only real images were allowed, and the file type was checked properly.</p>
+      <h4>HOW TO FIX IT</h4><p>Check the real file type, not just the name, allow only images, rename the file, and store uploads outside the website folder so they cannot run.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2>What I Learned</h2>
+  <div class="box">
+    <p>1. Most attacks start with the same mistake: trusting user input without checking it.</p>
+    <p>2. Low level in DVWA is not how a real site should work, it shows what happens when there is no fix.</p>
+    <p>3. High level does not mean perfect, it means the easy attack is blocked, and the attacker must work much harder.</p>
+    <p>4. A good fix is simple: check input, escape output, use tokens, and limit what a user can do.</p>
+  </div>
+  <div>
+    <a class="btn" href="article.html">Read My Phishing Article →</a>
+    <a class="btn btn2" href="index.html">Back Home</a>
+  </div>
+</section>
+
+<footer>
+  <p>Safe lab only. DVWA on my own computer. No real websites were tested.</p>
+</footer>
+
 </body>
 </html>
