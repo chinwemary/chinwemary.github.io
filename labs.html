@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DVWA Lab Writeup | Chinwe</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<a href="index.html" class="logo">Chinwe</a>
+<nav><a href="index.html">Home</a><a href="article.html">Writing</a></nav>
+</header>
+<main>
+<h1>DVWA lab: Reflected XSS, low security level</h1>
+<p><strong>Lab:</strong> DVWA, intentionally vulnerable, local install only. <strong>Tool:</strong> Firefox and Caido proxy.</p>
+<h2>What I tested</h2>
+<p>I entered a name in the reflected XSS form and checked if my input was shown back in the page without safe encoding.</p>
+<h2>What happened</h2>
+<p>At low level, the input was reflected in the response. That means attacker controlled text could change how the page behaves for a victim who clicks a crafted link.</p>
+<h2>Why it matters</h2>
+<p>Reflected XSS can be used for session theft, fake login pages, and redirects. It needs a victim to click, so it is often paired with phishing, like the email in my other article.</p>
+<h2>The fix</h2>
+<p>Encode user input on output with a function like htmlspecialchars in PHP, validate input on the server, and set a strong Content Security Policy. Never trust browser JavaScript checks alone, because a proxy like Caido can bypass them.</p>
+<h2>What I learned</h2>
+<p>Client side checks are for user experience, not security. The real check must happen on the server.</p>
+<p><a href="index.html">Back home</a></p>
+</main>
+<footer><p>Lab done in a local DVWA install for learning only.</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
