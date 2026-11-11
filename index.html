@@ -3,45 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chinwe | Cybersecurity Writer and Web Developer</title>
-<link rel="stylesheet" href="style.css">
+<title>Chinwe | Cybersecurity Writer & Web Developer</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif; }
+body { background:#0b1220; color:#e6edf7; line-height:1.6; }
+a { text-decoration:none; color:inherit; }
+header { padding:18px 5%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:rgba(11,18,32,.92); border-bottom:1px solid #1e293b; z-index:10; }
+.logo { font-weight:800; font-size:20px; }
+.logo span { color:#22d3ee; }
+nav a { margin-left:18px; font-size:14px; color:#cbd5e1; }
+nav a:hover { color:#22d3ee; }
+.hero { padding:70px 5% 50px; background: radial-gradient(circle at 20% 20%, #155e75 0%, transparent 45%), radial-gradient(circle at 85% 10%, #6d28d9 0%, transparent 40%), #0b1220; }
+.badge { display:inline-block; background:#164e63; color:#67e8f9; padding:6px 14px; border-radius:30px; font-size:13px; font-weight:700; letter-spacing:.5px; }
+.hero h1 { font-size:44px; line-height:1.1; margin:18px 0 14px; max-width:700px; }
+.hero h1 span { color:#22d3ee; }
+.hero p { color:#cbd5e1; max-width:100%; font-size:17px; }
+.buttons { margin-top:26px; display:flex; gap:12px; flex-wrap:wrap; }
+.btn { padding:13px 22px; border-radius:10px; font-weight:700; font-size:15px; }
+.btn1 { background:#22d3ee; color:#082f3a; }
+.btn2 { border:1px solid #334155; background:#111c33; color:white; }
+.tag { margin-top:18px; color:#94a3b8; font-size:14px; letter-spacing:1px; }
+.section { padding:50px 5%; }
+.section h2 { font-size:28px; margin-bottom:8px; }
+.section > p { color:#94a3b8; margin-bottom:24px; }
+.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:18px; }
+.card { background:#111c33; border:1px solid #1e293b; border-radius:16px; padding:24px; }
+.card:hover { border-color:#22d3ee; transform: translateY(-3px); }
+.icon { font-size:30px; margin-bottom:12px; }
+.card h3 { margin-bottom:8px; font-size:19px; }
+.card p { color:#cbd5e1; font-size:15px; margin-bottom:16px; }
+.card a { color:#22d3ee; font-weight:700; font-size:14px; }
+.skills span { display:inline-block; background:#1e293b; border:1px solid #334155; padding:8px 14px; border-radius:30px; margin:0 8px 10px 0; font-size:14px; }
+.about { background:#111c33; border:1px solid #1e293b; border-radius:18px; padding:28px; display:grid; grid-template-columns: 1.5fr 1fr; gap:24px; }
+.about h3 { margin-bottom:10px; }
+.about p { color:#cbd5e1; }
+.box { background:#0b1220; border-radius:14px; padding:20px; }
+.box p { margin-bottom:10px; font-size:15px; }
+.box b { color:#22d3ee; }
+footer { padding:30px 5%; text-align:center; color:#94a3b8; border-top:1px solid #1e293b; font-size:14px; }
+footer a { color:#22d3ee; font-weight:700; }
+@media(max-width:650px){ .hero h1{font-size:34px;} .about{grid-template-columns:1fr;} nav{display:none;} }
+</style>
 </head>
 <body>
+
 <header>
-<a href="index.html" class="logo">Chinwe</a>
-<nav>
-<a href="article.html">Writing</a>
-<a href="lab.html">Security Lab</a>
-<a href="mailto:marydbeloved44@gmail.com">Contact</a>
-</nav>
+  <div class="logo">Chinwe<span>.</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="article.html">Phishing Article</a>
+    <a href="lab.html">DVWA Lab</a>
+    <a href="mailto:marydbeloved44@gmail.com">Contact</a>
+  </nav>
 </header>
-<main>
+
 <section class="hero">
-<p class="tag">Remote Worldwide</p>
-<h1>I write about cybersecurity, then I build the page it lives on.</h1>
-<p>Security writing, technical writing, and code first websites in HTML, CSS, and JavaScript for SaaS, fintech, and security teams.</p>
-<div>
-<a class="btn" href="article.html">Read my writing</a>
-<a class="btn2" href="lab.html">See my lab work</a>
-</div>
+  <span class="badge">🛡️ CYBERSECURITY WRITER & DEVELOPER</span>
+  <h1>I write about cyber attacks in simple English. <span>And I build the websites to prove it.</span></h1>
+  <p>I break down phishing, hacking, and online scams so beginners can understand them, then I show my work with real labs and clean code.</p>
+  <div class="buttons">
+    <a class="btn btn1" href="article.html">Read My Phishing Article →</a>
+    <a class="btn btn2" href="lab.html">See My DVWA Lab</a>
+  </div>
+  <p class="tag">REMOTE WORLDWIDE</p>
 </section>
-<section>
-<h2>What I do</h2>
-<div class="grid">
-<div class="card"><h3>Security Writing</h3><p>Phishing, Zero Trust, SOC, and OWASP explained for normal people and for engineers.</p></div>
-<div class="card"><h3>Web Development</h3><p>Responsive, fast, accessible sites built in code. No templates, no page builders.</p></div>
-<div class="card"><h3>Hands On Security</h3><p>DVWA and TryHackMe labs, with writeups that show the attack and the fix.</p></div>
-</div>
+
+<section class="section">
+  <h2>My Work</h2>
+  <p>Real writing and real labs. No template, no page builder.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🎣</div>
+      <h3>Phishing, Explained Simply</h3>
+      <p>How phishing emails trick people, the red flags to spot in 10 seconds, and what to do if you click one.</p>
+      <a href="article.html">Read Article →</a>
+    </div>
+    <div class="card">
+      <div class="icon">🧪</div>
+      <h3>DVWA Lab Writeup</h3>
+      <p>How I practiced common web attacks in a safe lab, found the weakness, and fixed it step by step.</p>
+      <a href="lab.html">Read Writeup →</a>
+    </div>
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>This Website</h3>
+      <p>Built by hand with HTML, CSS, and JavaScript. Fast, clean, and works perfectly on your phone.</p>
+      <a href="mailto:marydbeloved44@gmail.com">Hire Me →</a>
+    </div>
+  </div>
 </section>
-<section>
-<h2>Featured work</h2>
-<div class="grid">
-<div class="card"><h3>Spot a phishing email in 60 seconds</h3><p>800 words, checklist included.</p><a href="article.html">Read it</a></div>
-<div class="card"><h3>DVWA lab writeup</h3><p>How the flaw works, and how to fix it.</p><a href="lab.html">Read it</a></div>
-</div>
+
+<section class="section">
+  <h2>Skills</h2>
+  <p>What I use every day.</p>
+  <div class="skills">
+    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Cybersecurity Writing</span><span>Phishing Analysis</span><span>DVWA</span><span>GitHub</span>
+  </div>
 </section>
-</main>
-<footer><p>Available for UK and EU hours, and US afternoon overlap.</p></footer>
-<script src="script.js"></script>
+
+<section class="section">
+  <div class="about">
+    <div>
+      <h3>About Me</h3>
+      <p>I am a cybersecurity writer and web developer. I love turning hard security topics into clear, simple stories that anyone can understand, and then building clean websites around them.</p>
+      <p style="margin-top:12px;">Available for UK and EU hours, and US afternoon overlap.</p>
+    </div>
+    <div class="box">
+      <p><b>Work:</b> Remote Worldwide</p>
+      <p><b>Contact:</b> marydbeloved44@gmail.com</p>
+      <p><b>GitHub:</b> chinwemary</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built by hand with HTML, CSS, and JavaScript. No template, no page builder.</p>
+  <p style="margin-top:8px;">Contact: <a href="mailto:marydbeloved44@gmail.com">marydbeloved44@gmail.com</a></p>
+</footer>
+
 </body>
 </html>
